@@ -4,9 +4,7 @@
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/26072.svg)](https://plugins.jetbrains.com/plugin/26072)
 
 <!-- Plugin description -->
-Native IntelliJ support for [Datastar](https://data-star.dev/).
-
-Features include:
+Adds context-aware autocomplete, diagnostics, hover documentation, and syntax highlighting for [Datastar](https://data-star.dev/) to IntelliJ IDEs.
 
 - Datastar attribute, modifier, and native event completion
 - Datastar action completion and parameter information
