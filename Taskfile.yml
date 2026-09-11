@@ -1,0 +1,30 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  test:
+    desc: Run the native Kotlin tests
+    cmds:
+      - ./gradlew test
+
+  build:
+    desc: Build the IntelliJ plugin ZIP
+    cmds:
+      - ./gradlew buildPlugin
+
+  verify:
+    desc: Verify plugin compatibility
+    cmds:
+      - ./gradlew verifyPlugin
+
+  run:
+    desc: Start a sandbox IDE with the plugin installed
+    cmds:
+      - ./gradlew runIde
+
+  publish:
+    desc: Publish the IntelliJ plugin
+    prompt: Publish to JetBrains Marketplace?
+    cmds:
+      - ./gradlew publishPlugin

@@ -1,0 +1,36 @@
+<idea-plugin>
+    <id>com.github.starfederation.datastarjetbrainsplugin</id>
+    <name>Datastar</name>
+    <vendor url="https://data-star.dev/">Star Federation</vendor>
+
+    <description><![CDATA[
+        Native Datastar language support: completion, validation, documentation,
+        navigation, references, rename, and action parameter information.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="dev.datastar.intellij.settings.DatastarSettings"/>
+        <applicationConfigurable
+            id="dev.datastar.intellij.settings"
+            parentId="language"
+            displayName="Datastar"
+            instance="dev.datastar.intellij.settings.DatastarConfigurable"/>
+
+        <completion.contributor language="HTML" implementationClass="dev.datastar.intellij.completion.DatastarCompletionContributor"/>
+        <completion.contributor language="XML" implementationClass="dev.datastar.intellij.completion.DatastarCompletionContributor"/>
+        <annotator language="HTML" implementationClass="dev.datastar.intellij.highlighting.DatastarAnnotator" order="last"/>
+        <annotator language="XML" implementationClass="dev.datastar.intellij.highlighting.DatastarAnnotator" order="last"/>
+        <lang.inspectionSuppressor language="HTML" implementationClass="dev.datastar.intellij.highlighting.DatastarInspectionSuppressor"/>
+        <lang.inspectionSuppressor language="XML" implementationClass="dev.datastar.intellij.highlighting.DatastarInspectionSuppressor"/>
+        <psi.referenceContributor implementation="dev.datastar.intellij.references.DatastarReferenceContributor"/>
+        <lang.documentationProvider language="HTML" implementationClass="dev.datastar.intellij.documentation.DatastarDocumentationProvider" order="first"/>
+        <lang.documentationProvider language="XML" implementationClass="dev.datastar.intellij.documentation.DatastarDocumentationProvider" order="first"/>
+        <platform.backend.documentation.targetProvider implementation="dev.datastar.intellij.documentation.DatastarDocumentationTargetProvider"/>
+        <renamePsiElementProcessor implementation="dev.datastar.intellij.references.DatastarRenameProcessor"/>
+        <codeInsight.parameterInfo language="HTML" implementationClass="dev.datastar.intellij.actions.DatastarParameterInfoHandler"/>
+        <codeInsight.parameterInfo language="XML" implementationClass="dev.datastar.intellij.actions.DatastarParameterInfoHandler"/>
+    </extensions>
+</idea-plugin>
